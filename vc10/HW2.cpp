@@ -1,12 +1,18 @@
 #include "cinder/app/AppBasic.h"
 #include "cinder/gl/gl.h"
 #include "Shape.h"
-#include "Circle.h"
+//#include "Circle.h" see Shape.cpp
 #include "Resources.h"
 #include "cinder/gl/Texture.h"
 #include "cinder/ImageIo.h"
 #include "Node.h"
 
+/* Hey it's Jake. I just finished looking over your code and I was overall impressed. Much better than my code which was messy, had to follow and stuff. Sorry about that.
+** I pretty much just touched up your code a little bitn syntax-wise, added a few comments and such. I kept all your original code in comment form if I changed something.
+** I did most of my work in the Node.cpp file. The biggest thing I suggested was editing your getEnd() method; alternatively you could use a method similar to the example I provided
+** below the popOff(Node* end) method to return the end of your list. One thing, I had to comment out the #include "Circle.h" lines since I didn't have that header file for some reason.
+** That may explain why I was seeing triangles rather than circles in the program. Hope I was able to help. -Jake
+*/
 
 
 using namespace ci;

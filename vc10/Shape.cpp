@@ -1,5 +1,6 @@
 #include "Shape.h"
-#include "Circle.h"
+//#include "Circle.h" Not sure where this came from but I couldn't find a Circle.h file so I had to comment out this line
+// Not sure if this affects anything, with this line commented out I see a red screen that I can add white triangles to. Note this is before I began my code review.
 #include "cinder/app/AppBasic.h"
 #include "cinder/gl/gl.h"
 

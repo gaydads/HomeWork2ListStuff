@@ -51,9 +51,9 @@ void Node::deleteNode(Node* node) {
 Node* Node::getEnd() {
 	//Since you are calling the no-args constructor wouldn't cur->next_ be cur? -Jake
 	//cur = new Node();
-	//setting cur=this should allow this method to actually enter the loop -Jake
+	//cur = next_;
 	Node* cur=this;
-	cur = next_;
+	cur = cur->next_;
 	while(cur != this) {
 		cur = cur->next_;
 	}
@@ -68,8 +68,6 @@ void Node::popOn(Node* node){
 	this->getEnd()->next_ = node;*/
 	
 	//This is probably a better, clearer way to write these lines. Program appears to function normally with this code.
-	//**NOTE** not all the pointers change by doing this, just the ones for node and the next_ for whatever node getEnd() returns
-	//Unfortunatly my "fix" for this somehow lead to the program freezing up. Therefore I have elected not to include it. -Jake
 	node->prev_=(*this).getEnd();
 	node->next_=(*this).getEnd()->next_;
 	(*this).getEnd()->next_ = node;
@@ -88,9 +86,24 @@ void Node::popOff(Node* end) {
 	this->getEnd()->prev_->next_=this->getEnd()->next_;
 	//set list end's next's previous to end's previous
 	this->getEnd()->prev_->next_=this->getEnd()->prev_;
-	//delete end/// BUT IT DELETES EVERYTHING??? Perhaps this is related to not all the pointers changing in the popOn method. -Jake
+	//delete end/// BUT IT DELETES EVERYTHING??? Keep in mind your getEnd() method is returning the node before this, that could be your problem You may want to add another method for returning the end of the list.
+	//you may consider making a getEndList() method that returns the node before the sentinel. -Jake
 	//delete(end);
 }
+
+/*Example getEndList(){
+	Node* cur=this;
+	if(cur->isSentinal==true)
+	{
+		return cur->prev_;
+	}
+	while(cur->next_->isSentinal!=true)
+	{
+		cur=cur->next_;
+	}
+	return cur; **Note** for this method to always work as it is currently written you always have to have a sentinal node in your list and that node has to be the first node in the list.
+}
+*/
 
 void Node::draw() {
 	//Again this is probably a better way to do this. Also, why is it drawing triangles when you are clearly making circles? is that realted to the Circle.h file that I don't have? -Jake
@@ -101,6 +114,7 @@ void Node::draw() {
 void Node::drawList() {
 	//I am slightly confused as to how cur=new Node() allows you to go through the whole list
 	//cur = new Node();
+	//cur = next_;
 	Node* cur=this;
 	cur = cur->next_;
 
